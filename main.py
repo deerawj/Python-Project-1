@@ -31,7 +31,6 @@ def menu():
             bank_operator.create_user()
         elif choice == '2':
             bank_operator.list_users()
-            input()
         elif choice == '3':
             bank_operator.create_account()
         elif choice == '4':
@@ -40,10 +39,11 @@ def menu():
             bank_operator.withdraw_money()
         elif choice == '6':
             bank_operator.view_transactions()
-            input()
         elif choice == '7':
             console.print("\n👋 Exiting... Thank you for using the Bank System!", style="bold green")
             break
+
+        input("Press Enter to continue...")
 
 
 if __name__ == "__main__":
