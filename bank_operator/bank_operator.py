@@ -47,7 +47,7 @@ def create_account():
     print("1. Savings Account")
     print("2. Students Account")
     print("3. Current Account")
-    account_choice = int(input("Enter your choice (1, 2, 3): "))
+    account_choice = int(input("Enter your choice (1, 2, 3) or any other number for a generic account: "))
     amount = float(input("Enter initial deposit: "))
 
     if account_choice == 1:
