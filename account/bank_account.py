@@ -3,13 +3,15 @@ from account.transaction import Transaction
 
 
 class BankAccount:
-    def __init__(self, name="John", email="john@gmail.com", initial_balance=0):
+    def __init__(self, user, initial_balance=0):
         if not isinstance(initial_balance, (int, float)) or initial_balance < 0:
             print("Invalid initial balance!")
+            return
+        
         self.balance = initial_balance
         self.transactions_history = []
         self.account_type = "Generic"
-        self.user = User(name, email)
+        self.user = user
 
     def deposit(self, amount):
         if not isinstance(amount, (int, float)) or amount <= 0:

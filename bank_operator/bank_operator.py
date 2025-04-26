@@ -40,6 +40,7 @@ def create_account():
 
     list_users()
     idx = get_user_idx()
+    user = users[idx]
 
 
     print("Account Type:")
@@ -50,14 +51,14 @@ def create_account():
     amount = float(input("Enter initial deposit: "))
 
     if account_choice == 1:
-        account = SavingsAccount(amount)
+        account = SavingsAccount(user, amount)
     elif account_choice == 2:
-        account = StudentAccount(amount)
+        account = StudentAccount(user, amount)
     elif account_choice == 3:
-        account = CurrentAccount(amount)
+        account = CurrentAccount(user, amount)
     else:
         print("Invalid choice!")
-        account = BankAccount(amount)
+        return
 
     users[idx].add_account(account)
     print(f"{account.get_account_type()} added!\n")
