@@ -1,5 +1,5 @@
-from account.transaction import Transaction
 from account.user import User
+from account.transaction import Transaction
 
 class BankAccount:
     def __init__(self,name= "John" ,email= "john@gmail.com", initial_balance=0):

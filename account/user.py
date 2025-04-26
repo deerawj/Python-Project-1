@@ -1,14 +1,10 @@
-from account.bank_account import BankAccount
-from types import List
-
-
 class User:
     def __init__(self, name: str, email: str):
         self.name: str = name
         self.email: str = email
-        self.accounts: List[BankAccount] = []
+        self.accounts = []
 
-    def add_account(self, account: BankAccount):
+    def add_account(self, account):
         self.accounts.append(account)
 
     def get_total_balance(self) -> float:
@@ -17,7 +13,7 @@ class User:
     def get_account_count(self) -> int:
         return len(self.accounts)
 
-    def remove_account(self, account: BankAccount) -> bool:
+    def remove_account(self, account) -> bool:
         if account in self.accounts:
             self.accounts.remove(account)
             return True
