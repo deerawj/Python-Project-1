@@ -16,7 +16,11 @@ class User:
 
 
     def remove_account(self, account):
-        return "Account"
+        if account in self.accounts:
+            self.accounts.remove(account)
+            return True
+        else:
+            return False
 
     def is_valid_email(self,email):
         # This should work for most common cases;
