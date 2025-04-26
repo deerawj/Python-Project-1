@@ -12,17 +12,23 @@ class BankAccount:
         self.user = User(name, email)
 
     def deposit(self, amount):
-        if not isinstance(amount, (int, float)) and amount <= 0:
+        if not isinstance(amount, (int, float)) or amount <= 0:
             print("Deposit amount is invalid!")
+            return
+        
         self.balance += amount
         self.transactions_history.append(Transaction(amount, "deposit"))
 
     def withdraw(self, amount):
         if not isinstance(amount, (int, float)) and amount <= 0:
             print("Withdrawal amount is invalid!")
+            return
+        
         if self.balance < amount - 100:
             print("Insufficient Balance!")
-        self.balance += amount
+            return
+        
+        self.balance -= amount
         self.transactions_history.append(Transaction(amount, "withdraw"))
 
     def get_balance(self):
