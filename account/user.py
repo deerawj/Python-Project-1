@@ -8,7 +8,7 @@ class User:
         self.accounts.append(account)
 
     def get_total_balance(self): 
-        return 0
+        return sum(account.get_balance() for account in self.accounts)
 
     def get_account_count(self):
         account_count = len(self.accounts)
