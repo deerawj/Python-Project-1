@@ -4,6 +4,9 @@ from account.bank_account import BankAccount, SavingsAccount, CurrentAccount, St
 users = []
 
 def get_user_idx():
+    if not users:
+        raise ValueError("No users available. Please create a user first.")
+
     while True:
         idx = int(input("Select user number: ")) - 1
         if 0 <= idx < len(users):
@@ -61,6 +64,9 @@ def create_account():
 
 def deposit_money():
     list_users()
+    if not users:
+        print("No users available. Please create a user first.\n")
+        return
     user = get_user()
     for i, acc in enumerate(user.accounts):
         print(f"{i+1}. Balance: Rs. {acc.get_balance()}")
@@ -70,6 +76,9 @@ def deposit_money():
 
 def withdraw_money():
     list_users()
+    if not users:
+        print("No users available. Please create a user first.\n")
+        return
     user = get_user()
     for i, acc in enumerate(user.accounts):
         print(f"{i+1}. Balance: Rs. {acc.get_balance()}")
@@ -83,6 +92,9 @@ def withdraw_money():
 
 def view_transactions():
     list_users()
+    if not users:
+        print("No users available. Please create a user first.\n")
+        return
     user = get_user()
     for i, acc in enumerate(user.accounts):
         print(f"\n{acc.get_account_type()} {i+1} - Balance: Rs. {acc.get_balance()}")
