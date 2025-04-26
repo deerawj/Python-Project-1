@@ -19,7 +19,11 @@ class User:
         return "Account"
 
     def is_valid_email(self,email):
-        return None
+        # This should work for most common cases;
+        # but this is not perfect
+        if "@" in email and "." in email:
+            return True
+        return False
 
 
     def __str__(self):
