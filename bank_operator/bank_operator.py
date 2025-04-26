@@ -3,6 +3,19 @@ from account.bank_account import BankAccount, SavingsAccount, CurrentAccount, St
 
 users = []
 
+def get_user_idx():
+    while True:
+        idx = int(input("Select user number: ")) - 1
+        if 0 <= idx < len(users):
+            break
+        else:
+            print("Invalid user number. Please try again.")
+    return idx
+
+def get_user():
+    idx = get_user_idx()
+    return users[idx]
+
 def create_user():
     name = input("Enter name: ")
     email = input("Enter email: ")
@@ -23,7 +36,9 @@ def create_account():
         return
 
     list_users()
-    idx = int(input("Select user number: ")) - 1
+    idx = get_user_idx()
+
+
     print("Account Type:")
     print("1. Savings Account")
     print("2. Students Account")
@@ -46,8 +61,7 @@ def create_account():
 
 def deposit_money():
     list_users()
-    idx = int(input("Select user: ")) - 1
-    user = users[idx]
+    user = get_user()
     for i, acc in enumerate(user.accounts):
         print(f"{i+1}. Balance: Rs. {acc.get_balance()}")
     acc_idx = int(input("Select account: ")) - 1
@@ -56,8 +70,7 @@ def deposit_money():
 
 def withdraw_money():
     list_users()
-    idx = int(input("Select user: ")) - 1
-    user = users[idx]
+    user = get_user()
     for i, acc in enumerate(user.accounts):
         print(f"{i+1}. Balance: Rs. {acc.get_balance()}")
     acc_idx = int(input("Select account: ")) - 1
@@ -70,8 +83,7 @@ def withdraw_money():
 
 def view_transactions():
     list_users()
-    idx = int(input("Select user: ")) - 1
-    user = users[idx]
+    user = get_user()
     for i, acc in enumerate(user.accounts):
         print(f"\n{acc.get_account_type()} {i+1} - Balance: Rs. {acc.get_balance()}")
         for tx in acc.get_transaction_history():
