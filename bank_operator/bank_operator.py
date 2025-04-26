@@ -57,8 +57,8 @@ def create_account():
     elif account_choice == 3:
         account = CurrentAccount(user, amount)
     else:
-        print("Invalid choice!")
-        return
+        print("Creating a generic account.")
+        account = BankAccount(amount)
 
     users[idx].add_account(account)
     print(f"{account.get_account_type()} added!\n")
