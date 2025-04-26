@@ -9,8 +9,9 @@ def create_user():
     user = User(name, email)
     if not user.is_valid_email(email):
         print("Email is invalid!")
-    users.append(user)
-    print(f"User {name} created.\n")
+    else:
+        users.append(user)
+        print(f"User {name} created.\n")
 
 def list_users():
     for i, user in enumerate(users):
